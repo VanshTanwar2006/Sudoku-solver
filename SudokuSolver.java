@@ -7,16 +7,11 @@ public class SudokuSolver {
             if (board[row][i] == val) {
                 return false;
             }
-        }
-            int sr = 3 * (row / 3);
-            int sc = 3 * (col / 3);
-            for (int i = sr; i < sr + 3; i++) {
-                for (int j = sc; j < sc + 3; j++) {
-                    if (board[i][j] == val) {
-                        return false;
-                    }
-                }
+            if (board[3 * (row / 3) + i / 3][3 * (col / 3) + i % 3] == val) {
+                return false;
             }
+        }
+            
         return true;
     }
     public boolean helper(char[][] board , int row , int col) {
